@@ -57,7 +57,6 @@ SceneBase {
         height: 60
         anchors.left: menuScene.gameWindowAnchorItem.left
         anchors.leftMargin: 10
-        anchors.bottom: menuScene.gameWindowAnchorItem.left
         anchors.bottomMargin: 10
     }
 }

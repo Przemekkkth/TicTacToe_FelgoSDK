@@ -25,29 +25,41 @@ SceneBase {
         onClicked: backButtonPressed()
     }
 
+    Text{
+        anchors.bottom: column.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        font.pixelSize: 30
+        color: "#e9e9e9"
+        text: "Choose you level:"
+    }
     // levels to be selected
-    Row {
-        anchors.centerIn: parent
+    Column {
+        id: column
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 20
         spacing: 10
+
+
         MenuButton {
-            text: "1"
-            width: 50
+            text: "Chimpanzee"
+            width: 100
             height: 50
             onClicked: {
                 levelPressed("Level1.qml")
             }
         }
         MenuButton {
-            text: "2"
-            width: 50
+            text: "Human"
+            width: 100
             height: 50
             onClicked: {
                 levelPressed("Level2.qml")
             }
         }
         MenuButton {
-            text: "3"
-            width: 50
+            text: "ChatGPT"
+            width: 100
             height: 50
             onClicked: {
                 levelPressed("Level3.qml")
