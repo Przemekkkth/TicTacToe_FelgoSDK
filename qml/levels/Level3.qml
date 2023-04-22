@@ -3,7 +3,7 @@ import Felgo 3.0
 import "../common" as Common
 
 Common.LevelBase {
-    levelName: "Level3"
+    levelName: "ChatGPT"
 
     Rectangle {
         id: rectangle

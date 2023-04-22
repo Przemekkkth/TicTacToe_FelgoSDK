@@ -3,7 +3,7 @@ import Felgo 3.0
 import "../common" as Common
 
 Common.LevelBase {
-    levelName: "Level1"
+    levelName: "Chimpanzee"
 
     Rectangle {
         color: "orange"
