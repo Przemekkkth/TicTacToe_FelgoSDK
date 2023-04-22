@@ -69,6 +69,11 @@ SceneBase {
         }
     }
 
+
+    ResultRectangle{
+        id: resultRect
+    }
+
     // we connect the gameScene to the loaded level
     Connections {
         // only connect if a level is loaded, to prevent errors
@@ -79,6 +84,14 @@ SceneBase {
             if(gameRunning) {
                 score++
             }
+        }
+
+        onResultIsShowed:{
+            console.log(result)
+            resultRect.visible = true
+            //resultRect.enabled = true
+            resultRect.resulText = result
+            //(string result)
         }
     }
 
