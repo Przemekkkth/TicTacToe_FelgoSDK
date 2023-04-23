@@ -60,4 +60,5 @@ macx {
 }
 
 DISTFILES += \
+    qml/common/Piece.qml \
     qml/common/ResultRectangle.qml

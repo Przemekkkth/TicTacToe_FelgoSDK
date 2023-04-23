@@ -1,4 +1,4 @@
-// Set up the game board
+// Set up the game board. It is 1x1
 const board = [
   ['']
 ];
@@ -28,6 +28,7 @@ function getText(row, col)
     {
        return board[row][col];
     }
+    return '';
 }
 
 // Handle a move
@@ -51,6 +52,13 @@ function handleMove(row, col) {
   } else {
     console.log('This cell is already occupied. Choose another one.');
   }
+}
+
+function isRunning(){
+    const winner = checkWinner();
+    if (winner) {
+        return false;
+    }
 }
 
 // Start the game

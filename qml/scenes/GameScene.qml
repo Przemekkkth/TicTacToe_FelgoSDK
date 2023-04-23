@@ -66,6 +66,8 @@ SceneBase {
             activeLevel = item
             // restarts the countdown
             countdown = 3
+            // emit signal for level
+            loader.item.sceneRestarted()
         }
     }
 
@@ -87,31 +89,48 @@ SceneBase {
         }
 
         onResultIsShowed:{
-            console.log(result)
             resultRect.visible = true
-            //resultRect.enabled = true
             resultRect.resulText = result
-            //(string result)
+        }
+
+        onScoreUpdated:{
+            scoreText.text = "X - " + xScore + " O - " + oScore;
         }
     }
 
-    // name of the current level
+    // name of the score
     Text {
+        id: scoreText
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: gameScene.gameWindowAnchorItem.top
         anchors.topMargin: 30
         color: "white"
         font.pixelSize: 40
-        text: score
+        text: "X - 0 O - 0 "
+    }
+
+    // restart scene to start again
+    MenuButton
+    {
+        text: "Restart Scene"
+        // anchor the button to the gameWindowAnchorItem to be on the edge of the screen on any device
+        anchors.left: gameScene.gameWindowAnchorItem.left
+        anchors.leftMargin: 10
+        anchors.bottom:  gameScene.gameWindowAnchorItem.bottom
+        anchors.bottomMargin: 10
+        onClicked: {
+            loader.loaded();
+            resultRect.visible = false
+        }
     }
 
     // text displaying either the countdown or "tap!"
-    Text {
-        anchors.centerIn: parent
-        color: "white"
-        font.pixelSize: countdown > 0 ? 160 : 18
-        text: countdown > 0 ? countdown : "tap!"
-    }
+//    Text {
+//        anchors.centerIn: parent
+//        color: "white"
+//        font.pixelSize: countdown > 0 ? 160 : 18
+//        text: countdown > 0 ? countdown : "tap!"
+//    }
 
     // if the countdown is greater than 0, this timer is triggered every second, decreasing the countdown (until it hits 0 again)
     Timer {
