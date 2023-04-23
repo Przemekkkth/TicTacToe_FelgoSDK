@@ -1,28 +1,75 @@
 import QtQuick 2.0
 import Felgo 3.0
 import "../common" as Common
+import "../js/medium_board.js" as MediumBoard
 
 Common.LevelBase {
     levelName: "Human"
+    onSceneRestarted: {
+        MediumBoard.reset()
+        for(var i = 0; i < 9; ++i)
+        {
+            var piece = mainRepeater.itemAt(i)
+            piece.text = ""
+            piece.color = piece.activatedPiece
+        }
+        isRunning = true
+        scoreUpdated(0, 0)
+    }
 
     Rectangle {
-        id: rectangle
-        color: "cyan"
-        width: 100
-        height: 100
-        radius: 10
-        property bool togglePosition: false
-        anchors.horizontalCenter: parent.horizontalCenter
-        // this property binding changes the horizontal offset from the center each time togglePosition changes
-        anchors.horizontalCenterOffset: togglePosition ? -100 : 100
-        anchors.verticalCenter: parent.verticalCenter
-        MouseArea {
-            anchors.fill: parent
-            onPressed: {
-                // every time the rectangle is pressed, we toggle its position by changing the horizontal offset from the center
-                rectangle.togglePosition = !rectangle.togglePosition
-                rectanglePressed()
-            }
-        }
-    }
-}
+        anchors.centerIn: parent
+        width: 155
+        height: 155
+        color: "transparent"
+        Grid {
+            columns: 3
+            rows: 3
+            spacing: 5
+
+            Repeater {
+                id: mainRepeater
+                model: 9
+                Common.Piece {
+                    width: 50
+                    height: 50
+                    onClicked: {
+                        if(!isRunning)
+                        {
+                            return;
+                        }
+                        if(MediumBoard.isEmptyPiece(modelData))
+                        {
+                            MediumBoard.playerMove(modelData)
+                            color = blockedPiece
+                            text = MediumBoard.player
+                            var pcCanMove = true
+                            if(MediumBoard.checkWinner())
+                            {
+                                resultIsShowed(MediumBoard.checkWinner())
+                                isRunning = false;
+                                pcCanMove = false
+                            }
+                            if(pcCanMove)
+                            {
+                                var pcIndex = MediumBoard.pcMove();
+                                var pcPiece = mainRepeater.itemAt(pcIndex);
+                                pcPiece.color = pcPiece.blockedByEnemyPiece;
+                                pcPiece.text = MediumBoard.pc
+                            }
+                            if(MediumBoard.checkWinner())
+                            {
+                                resultIsShowed(MediumBoard.checkWinner())
+                                isRunning = false;
+                                pcCanMove = false
+                            }
+                        }
+                        scoreUpdated(MediumBoard.countOf(MediumBoard.player),
+                                     MediumBoard.countOf(MediumBoard.pc))
+                    }
+                } //Common.Piece
+            } //Repeater
+        } //Grid
+    } //Rectangle
+} //Common.LevelBase
+

@@ -9,6 +9,7 @@ Rectangle {
 
     property color activatedPiece: "#00ff00"
     property color blockedPiece:   "#c7c7c7"
+    property color blockedByEnemyPiece: "#b22222"
 
     color: activatedPiece
     // round edges
