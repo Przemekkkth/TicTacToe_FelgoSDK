@@ -30,7 +30,7 @@ SceneBase {
         anchors.horizontalCenter: parent.horizontalCenter
         font.pixelSize: 30
         color: "#e9e9e9"
-        text: "Choose you level:"
+        text: "Choose a difficulty level:"
     }
     // levels to be selected
     Column {
@@ -58,7 +58,7 @@ SceneBase {
             }
         }
         MenuButton {
-            text: "ChatGPT"
+            text: "RoboCop"
             width: 100
             height: 50
             onClicked: {

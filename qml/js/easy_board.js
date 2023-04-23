@@ -37,21 +37,7 @@ function handleMove(row, col) {
   if (!board[row][col]) {
     // Update the board
     board[row][col] = currentPlayer;
-
-    // Check if there's a winner
-    const winner = checkWinner();
-    if (winner) {
-      // Game over
-      console.log(`${winner} wins!`);
-    } else {
-      // Switch player
-      currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-      moves++;
-      console.log(`It's ${currentPlayer}'s turn.`);
     }
-  } else {
-    console.log('This cell is already occupied. Choose another one.');
-  }
 }
 
 function isRunning(){
@@ -61,6 +47,3 @@ function isRunning(){
     }
 }
 
-// Start the game
-console.log(`It's ${currentPlayer}'s turn.`);
-//handleMove(0, 0); // Make a move at (0, 0)
