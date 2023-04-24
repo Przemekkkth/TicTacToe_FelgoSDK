@@ -1,46 +1,76 @@
 import QtQuick 2.0
 import Felgo 3.0
 import "../common" as Common
+import "../js/hard_board.js" as HardBoard
 
 Common.LevelBase {
-    levelName: "ChatGPT"
+    levelName: "RoboCop"
+    onSceneRestarted: {
+        HardBoard.reset()
+        for(var i = 0; i < 25; ++i)
+        {
+            var piece = mainRepeater.itemAt(i)
+            piece.text = ""
+            piece.color = piece.activatedPiece
+        }
+        isRunning = true
+        scoreUpdated(0, 0)
+    }
 
     Rectangle {
-        id: rectangle
-        color: "blue"
-        width: 100
-        height: 100
-        radius: 10
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.horizontalCenterOffset: 120
-        anchors.verticalCenter: parent.verticalCenter
-        MouseArea {
-            anchors.fill: parent
-            onPressed: rectanglePressed()
-        }
-    }
+        anchors.centerIn: parent
+        anchors.verticalCenterOffset: 25
+        width: 200
+        height: 200
+        color: "transparent"
+        Grid {
+            columns: 5
+            rows: 5
+            spacing: 5
 
-    // SequentialAnimation plays all its child animations one after the other
-    // we are moving the rectangle by changing its horizontal offset from the center
-    SequentialAnimation {
-        running: true
-        // let it run forever
-        loops: Animation.Infinite
-        // move the rectangle left by changing the offset from current (120) to -120
-        NumberAnimation {
-            target: rectangle
-            duration: 1500
-            property: "anchors.horizontalCenterOffset"
-            easing.type: Easing.InOutQuad
-            to: -120
-        }
-        // after moving left has finished, we move the rectangle right by changing the offset from current (-120) to 120
-        NumberAnimation {
-            target: rectangle
-            duration: 1500
-            property: "anchors.horizontalCenterOffset"
-            easing.type: Easing.InOutQuad
-            to: 120
-        }
-    }
-}
+            Repeater {
+                id: mainRepeater
+                model: 25
+                Common.Piece {
+                    width: 35
+                    height: 35
+                    onClicked: {
+                        if(!isRunning)
+                        {
+                            return;
+                        }
+                        if(HardBoard.isEmptyPiece(modelData))
+                        {
+                            HardBoard.playerMove(modelData)
+                            color = blockedPiece
+                            text = HardBoard.player
+                            var pcCanMove = true
+                            if(HardBoard.checkWinner())
+                            {
+                                resultIsShowed(HardBoard.checkWinner())
+                                isRunning = false;
+                                pcCanMove = false
+                            }
+                            if(pcCanMove)
+                            {
+                                var pcIndex = HardBoard.pcMove();
+                                var pcPiece = mainRepeater.itemAt(pcIndex);
+                                pcPiece.color = pcPiece.blockedByEnemyPiece;
+                                pcPiece.text = HardBoard.pc
+                            }
+                            if(HardBoard.checkWinner())
+                            {
+                                resultIsShowed(HardBoard.checkWinner())
+                                isRunning = false;
+                                pcCanMove = false
+                            }
+                        }
+                        scoreUpdated(HardBoard.countOf(HardBoard.player),
+                                     HardBoard.countOf(HardBoard.pc))
+                    }
+                } //Common.Piece
+            } //Repeater
+        } //Grid
+    } //Rectangle
+} //Common.LevelBase
+
