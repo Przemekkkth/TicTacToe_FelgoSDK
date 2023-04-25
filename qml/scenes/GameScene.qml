@@ -70,13 +70,6 @@ SceneBase {
     Connections {
         // only connect if a level is loaded, to prevent errors
         target: activeLevel !== undefined ? activeLevel : null
-        // increase the score when the rectangle is clicked
-        onRectanglePressed: {
-            // only increase score when game is running
-            if(gameRunning) {
-                score++
-            }
-        }
 
         onResultIsShowed:{
             resultRect.visible = true

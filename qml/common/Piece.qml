@@ -9,11 +9,11 @@ Rectangle {
     width: buttonText.width+ paddingHorizontal*2
     height: buttonText.height+ paddingVertical*2
 
-    property color activatedPiece: "#00ff00"
-    property color blockedPiece:   "#c7c7c7"
-    property color blockedByEnemyPiece: "#b22222"
+    property color activatedColor: "#00ff00"
+    property color blockedColor:   "#c7c7c7"
+    property color blockedByEnemyColor: "#b22222"
 
-    color: activatedPiece
+    color: activatedColor
 
     /*!
         round edges

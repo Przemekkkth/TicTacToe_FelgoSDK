@@ -11,7 +11,7 @@ Common.LevelBase {
         {
             var piece = mainRepeater.itemAt(i)
             piece.text = ""
-            piece.color = piece.activatedPiece
+            piece.color = piece.activatedColor
         }
         isRunning = true
         scoreUpdated(0, 0)
@@ -42,7 +42,7 @@ Common.LevelBase {
                         if(HardBoard.isEmptyPiece(modelData))
                         {
                             HardBoard.playerMove(modelData)
-                            color = blockedPiece
+                            color = blockedColor
                             text = HardBoard.player
                             var pcCanMove = true
                             if(HardBoard.checkWinner())
@@ -55,7 +55,7 @@ Common.LevelBase {
                             {
                                 var pcIndex = HardBoard.pcMove();
                                 var pcPiece = mainRepeater.itemAt(pcIndex);
-                                pcPiece.color = pcPiece.blockedByEnemyPiece;
+                                pcPiece.color = pcPiece.blockedByEnemyColor;
                                 pcPiece.text = HardBoard.pc
                             }
                             if(HardBoard.checkWinner())
