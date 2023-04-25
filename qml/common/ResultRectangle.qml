@@ -34,7 +34,6 @@ Rectangle{
         anchors.fill: parent
         onPressed: {
             resultRect.visible = false
-            console.log("It is pressed")
         }
     }
 }

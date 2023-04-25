@@ -9,7 +9,7 @@ Item {
     signal rectanglePressed
     // this is emiited when player or pc win a game
     signal resultIsShowed(result: string)
-    // when you lose, use this signal for the starting source ;D
+    // when you lose, use this signal for the starting source
     signal sceneRestarted
     // this is emitted when score is changed
     signal scoreUpdated(xScore: int, oScore : int)
