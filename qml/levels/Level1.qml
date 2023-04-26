@@ -24,8 +24,11 @@ Common.LevelBase {
             text = EasyBoard.getText(0,0)
             if(isRunning)
             {
+                playTickSND()
                 resultIsShowed("Congratulation!\n Player X Win :D")
+                playEndSND()
             }
+
             isRunning = EasyBoard.isRunning()
             scoreUpdated(1, 0)
         }

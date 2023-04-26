@@ -41,6 +41,7 @@ Common.LevelBase {
                         if(MediumBoard.isEmptyPiece(modelData))
                         {
                             MediumBoard.playerMove(modelData)
+                            playTickSND()
                             color = blockedColor
                             text = MediumBoard.player
                             var pcCanMove = true
@@ -49,6 +50,7 @@ Common.LevelBase {
                                 resultIsShowed(MediumBoard.checkWinner())
                                 isRunning = false;
                                 pcCanMove = false
+                                playEndSND()
                             }
                             if(pcCanMove)
                             {
@@ -56,12 +58,14 @@ Common.LevelBase {
                                 var pcPiece = mainRepeater.itemAt(pcIndex);
                                 pcPiece.color = pcPiece.blockedByEnemyColor;
                                 pcPiece.text = MediumBoard.pc
+                                playTickSND()
                             }
                             if(MediumBoard.checkWinner())
                             {
                                 resultIsShowed(MediumBoard.checkWinner())
                                 isRunning = false;
                                 pcCanMove = false
+                                playEndSND()
                             }
                         }
                         scoreUpdated(MediumBoard.countOf(MediumBoard.player),

@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+import Felgo 3.0
 Item {
     /*!
         this will be displayed in the GameScene
@@ -21,4 +21,25 @@ Item {
         this is emitted when score is changed
     */
     signal scoreUpdated(xScore: int, oScore : int)
+    /*!
+        play tick sound
+    */
+    function playTickSND(){
+        tick.play();
+    }
+    /*!
+        play tick end sound
+    */
+    function playEndSND(){
+        end.play();
+    }
+
+    SoundEffect{
+        id: tick
+        source: "../../assets/snd/tick.wav"
+    }
+    SoundEffect{
+        id: end
+        source: "../../assets/snd/end.wav"
+    }
 }

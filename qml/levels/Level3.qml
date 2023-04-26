@@ -45,11 +45,13 @@ Common.LevelBase {
                             color = blockedColor
                             text = HardBoard.player
                             var pcCanMove = true
+                            playTickSND()
                             if(HardBoard.checkWinner())
                             {
                                 resultIsShowed(HardBoard.checkWinner())
                                 isRunning = false;
                                 pcCanMove = false
+                                playEndSND()
                             }
                             if(pcCanMove)
                             {
@@ -57,12 +59,14 @@ Common.LevelBase {
                                 var pcPiece = mainRepeater.itemAt(pcIndex);
                                 pcPiece.color = pcPiece.blockedByEnemyColor;
                                 pcPiece.text = HardBoard.pc
+                                playTickSND()
                             }
                             if(HardBoard.checkWinner())
                             {
                                 resultIsShowed(HardBoard.checkWinner())
                                 isRunning = false;
                                 pcCanMove = false
+                                playEndSND()
                             }
                         }
                         scoreUpdated(HardBoard.countOf(HardBoard.player),
