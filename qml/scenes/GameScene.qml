@@ -16,7 +16,7 @@ SceneBase {
     // background
     Rectangle {
         anchors.fill: parent.gameWindowAnchorItem
-        color: "#dd94da"
+        color: "#993399"
     }
 
     // back button to leave scene

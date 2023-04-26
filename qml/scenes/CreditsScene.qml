@@ -11,6 +11,15 @@ SceneBase {
         color: "#49a349"
     }
 
+    // the "logo"
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 30
+        font.pixelSize: 30
+        color: "#e9e9e9"
+        text: "Tic Tac Toe"
+    }
+
     // back button to leave scene
     MenuButton {
         text: "Back"

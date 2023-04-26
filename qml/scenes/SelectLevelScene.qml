@@ -11,7 +11,16 @@ SceneBase {
     // background
     Rectangle {
         anchors.fill: parent.gameWindowAnchorItem
-        color: "#ece468"
+        color: "#993300"
+    }
+
+    // the "logo"
+    Text {
+        anchors.horizontalCenter: parent.horizontalCenter
+        y: 30
+        font.pixelSize: 30
+        color: "#e9e9e9"
+        text: "Tic Tac Toe"
     }
 
     // back button to leave scene
