@@ -59,4 +59,48 @@ SceneBase {
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
     }
+
+    // enhances the appearance of the scene
+    AnimatedSprite{
+        source: "../../assets/sprite/2x2sprite.png"
+        frameWidth: 154
+        frameHeight: 154
+        frameCount: 4
+        frameDuration: 1500
+        width: 72
+        height: 72
+        interpolate: false
+        anchors.left: menuScene.gameWindowAnchorItem.left
+        anchors.bottom: menuScene.gameWindowAnchorItem.bottom
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 10
+    }
+
+    // x Image helps close app
+    Image{
+        id: xImage
+        source: "../../assets/img/x.png"
+        width: 35
+        height: 35
+        anchors.right: menuScene.gameWindowAnchorItem.right
+        anchors.top: menuScene.gameWindowAnchorItem.top
+        anchors.rightMargin: 15
+        anchors.topMargin: 15
+        MouseArea{
+            anchors.fill: parent
+            onClicked: {
+                menuScene.backButtonPressed()
+            }
+        }
+    }
+    RotationAnimation {
+        id: xImageRotAnim
+        target: xImage
+        running: true
+        property: "rotation"
+        from: 0
+        to: 360
+        duration: 2500
+        loops: Animation.Infinite
+    }
 }

@@ -75,4 +75,49 @@ SceneBase {
             }
         }
     }
+
+
+    // enhances the appearance of the scene
+    AnimatedSprite{
+        source: "../../assets/sprite/2x2sprite.png"
+        frameWidth: 154
+        frameHeight: 154
+        frameCount: 4
+        frameDuration: 1500
+        width: 72
+        height: 72
+        interpolate: false
+        anchors.right: selectLevelScene.gameWindowAnchorItem.right
+        anchors.bottom: selectLevelScene.gameWindowAnchorItem.bottom
+        anchors.rightMargin: 15
+        anchors.bottomMargin: 15
+    }
+
+    Image{
+        source: "../../assets/img/x.png"
+        width: 35
+        height: 35
+        anchors.left: selectLevelScene.gameWindowAnchorItem.left
+        anchors.top: selectLevelScene.gameWindowAnchorItem.top
+        anchors.leftMargin: 15
+        anchors.topMargin: 150
+    }
+    Image{
+        source: "../../assets/img/o.png"
+        width: 35
+        height: 35
+        anchors.left: selectLevelScene.gameWindowAnchorItem.left
+        anchors.top: selectLevelScene.gameWindowAnchorItem.top
+        anchors.leftMargin: 50
+        anchors.topMargin: 185
+    }
+    Image{
+        source: "../../assets/img/empty.png"
+        width: 35
+        height: 35
+        anchors.left: selectLevelScene.gameWindowAnchorItem.left
+        anchors.top: selectLevelScene.gameWindowAnchorItem.top
+        anchors.leftMargin: 85
+        anchors.topMargin: 220
+    }
 }
