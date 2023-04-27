@@ -58,6 +58,8 @@ SceneBase {
             activeLevel = item
             // emit signal for level
             loader.item.sceneRestarted()
+            // hide resultRect
+            resultRect.visible = false
         }
     }
 
