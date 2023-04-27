@@ -25,7 +25,7 @@ Common.LevelBase {
             if(isRunning)
             {
                 playTickSND()
-                resultIsShowed("Congratulation!\n Player X Wins :D")
+                resultIsShowed("Congratulation!\n Player X Wins")
                 playEndSND()
             }
 
