@@ -47,7 +47,7 @@ function checkWinner() {
           board[i][j+2] === board[i][j+3] &&
           (board[i][j] === 'X' || board[i][j] === 'O')
         ) {
-          return board[i][j];
+          return board[i][j] + " wins";
         }
       }
     }
@@ -61,7 +61,7 @@ function checkWinner() {
           board[i+2][j] === board[i+3][j] &&
           (board[i][j] === 'X' || board[i][j] === 'O')
         ) {
-          return board[i][j];
+          return board[i][j] + " wins";
         }
       }
     }
@@ -75,7 +75,7 @@ function checkWinner() {
           board[i+2][j+2] === board[i+3][j+3] &&
           (board[i][j] === 'X' || board[i][j] === 'O')
         ) {
-          return board[i][j];
+          return board[i][j] + " wins";
         }
       }
     }
@@ -89,7 +89,7 @@ function checkWinner() {
           board[i+2][j-2] === board[i+3][j-3] &&
           (board[i][j] === 'X' || board[i][j] === 'O')
         ) {
-          return board[i][j];
+          return board[i][j] + " wins";
         }
       }
     }
